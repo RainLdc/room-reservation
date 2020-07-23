@@ -15,7 +15,9 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+app.get("/", function (req, res) {
+  res.send("Date : "+ new Date());
+});
 const db = require("./app/models");
 db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and Resync Database with { force: true }");
