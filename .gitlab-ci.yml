@@ -1,0 +1,14 @@
+image: docker:stable
+
+services:
+  - docker:dind
+
+stages:
+- build
+
+build-back:
+ stage: build
+ script:
+   - docker build -t back-room:latest .
+ only:
+   - master    
