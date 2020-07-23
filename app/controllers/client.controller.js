@@ -75,7 +75,6 @@ exports.updateClient = (req, res) => {
         else res.status(200).send("Cient Not Delete, don't find Cient ");
       })
       .catch((err) => {
-        console.log(err);
         res.status(500).send(err.message);
       });
 };

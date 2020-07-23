@@ -16,7 +16,7 @@ exports.createApartment = (req, res) => {
           number: req.body.room.number,
           area: req.body.room.area,
           price: req.body.room.price,
-          ApartmentId: apartment.id,
+          link: apartment.id,
         })
           .then((room) => {
             res.status(201).send(room);
@@ -37,7 +37,6 @@ exports.getAllApartment = (req, res) => {
       res.status(200).send(apartment);
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).send(err.message);
     });
 };
@@ -80,6 +79,8 @@ exports.deleteApartment = (req, res) => {
     where: {
       id: req.body.id,
     },
+    include: ["room"],
+    force: true,
   })
     .then((apartment) => {
       if (apartment == 1) res.status(200).send("Delete Apartment");

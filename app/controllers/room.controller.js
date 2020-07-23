@@ -28,7 +28,7 @@ exports.createRoom = (req, res) => {
     number: req.body.room.number,
     area: req.body.room.area,
     price: req.body.room.price,
-    ApartmentId: req.body.room.ApartmentId,
+    link: req.body.room.link,
   })
     .then((room) => {
       res.status(201).send(room);
@@ -77,7 +77,6 @@ exports.updateRoom = (req, res) => {
 exports.reservationRoom = (req, res) => {
   Room.findByPk(req.body.room.id)
     .then((room) => {
-      console.log(room);
       Room.update(
         {
           roomId: req.body.room.roomId,
